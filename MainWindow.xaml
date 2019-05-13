@@ -1,0 +1,517 @@
+﻿<Window x:Class="FlatExchanger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlatExchanger"
+        mc:Ignorable="d"
+        Title="Flat Exchanger" MinWidth="1080" MinHeight="476" Height="676" Width="1280"  FontSize="14" Background="#FFE5E5E5" MaxWidth="2048" MaxHeight="1024" Icon="Pictures/ico.png">
+    <Grid>
+
+        <TabControl>
+            <TabItem  Header="Поиск">
+                <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="Auto" >
+
+                    <Grid  Background="#FFE5E5E5" DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <!-- Description-->
+                        <TextBlock  Text="Описание" FontSize="14" FontWeight="Bold" Margin="10px 10px 0px 10px" Grid.Column="0"/>
+                        <Button Name="btnDetail"  FontSize="12" Margin="1,0,5,0" Content="Подробнее"  Grid.Column="1" Click="BtnDetail_Click"/>
+                        <Button Name="btnDeleteFlatInSearchForm" IsEnabled="False" FontSize="12" Margin="1,0,5,0" Content="Удалить квартиру"  Grid.Column="2" Click="BtnDeleteFlatInSearchForm_Click"/>
+                        <Button Name="btnSearchCounterForm" IsEnabled="False" FontSize="12" Margin="1,0,5,0" Content="Поиск встречного варианта"  Grid.Column="3" Click="BtnSearchCounterForm_Click"/>
+                    </Grid>
+                    <DataGrid DockPanel.Dock="Top" Name="dgCurrentAddFlat" Focusable="False" Height="75" Margin="5,10,5,0" AllowDrop="False" GridLinesVisibility="None" ScrollViewer.CanContentScroll="False" VerticalScrollBarVisibility="Disabled"/>
+                    <!-- Conditions of Search-->
+                    <TextBlock DockPanel.Dock="Top" Text="Критерии поиска" FontSize="14" FontWeight="Bold" Margin="10px 5px 0px 5px" Grid.Column="0"/>
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height = "*" />
+                            <RowDefinition Height = "*" />
+                        </Grid.RowDefinitions>
+                        <!--Form for search-->
+                        <TextBlock Text="Район" Margin="10px 5px 0px 5px" Grid.Column="0" Grid.Row="0"/>
+                        <TextBlock Text="Микрорайон" Margin="10px 5px 0px 5px" Grid.Column="1" Grid.Row="0"/>
+                        <TextBlock Text="Улица" Margin="10px 5px 0px 5px" Grid.Column="2" Grid.Row="0"/>
+                        <TextBlock Text="Количество комнат" Margin="10px 5px 0px 5px" Grid.Column="3" Grid.Row="0"/>
+                        <TextBlock Text="Цена" Margin="10px 5px 0px 5px" Grid.Column="4" Grid.Row="0"/>
+                        <TextBlock Text="Площадь" Margin="10px 5px 0px 5px" Grid.Column="5" Grid.Row="0"/>
+                        <!-- ComboBox part-->
+                        <!--District-->
+                        <ComboBox Name="cbSearchTabDistrict" Grid.Column="0" Grid.Row="1"  Margin="5,0,0,0" SelectionChanged="CbSearchTabDistrict_SelectionChanged" >
+                            <!-- КЕЙС Районов Форма поиска-->
+                            <ComboBoxItem Name="searchTSENTRALNYY">Центральный</ComboBoxItem>
+
+                            <ComboBoxItem Name="searchPERVOMAYSKIYX">Первомайский</ComboBoxItem>
+                            
+                        </ComboBox>
+                        <!-- Micro District-->
+                        <!-- Первомайский -->
+                        <ComboBox Text="Не указан" Name="cbSearchTabMicroDistrictX" Grid.Column="1" Grid.Row="1" Margin="5,0,0,0">
+                            <!--Центральный район-->
+                            <ComboBoxItem Name="cbSearchTabMicroC0">Не указан</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC1" Visibility="Collapsed">Веснянка</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC2" Visibility="Collapsed">Дрозды</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC3" Visibility="Collapsed">Зацень</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC4" Visibility="Collapsed">Лебяжий (Ржавец)</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC5" Visibility="Collapsed">Машерова, Оперный театр, Коммунистическая</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC6" Visibility="Collapsed">Независимости, Немига, Романовская слобода</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC7" Visibility="Collapsed">Новинки</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC8" Visibility="Collapsed">Победителей, Заславская, Грибоедова, Тимирязева</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC9" Visibility="Collapsed">Цнянка</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroC10" Visibility="Collapsed">Червякова, Шевченко</ComboBoxItem>
+                            <!--Первомайский район-->
+                            <ComboBoxItem Name="cbSearchTabMicroP1" Visibility="Collapsed">Ботаническая, Академическая</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP2" Visibility="Collapsed">Военный городок (Великий лес)</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP3" Visibility="Collapsed">Восток</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP4" Visibility="Collapsed">Восточный</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP5" Visibility="Collapsed">Макаенка</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP6" Visibility="Collapsed">Маяк Минска</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP7" Visibility="Collapsed">Независимости, Кедышко, Волгоградская</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP8" Visibility="Collapsed">Озерище</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP9" Visibility="Collapsed">Седых, Тикоцкого</ComboBoxItem>
+                            <ComboBoxItem Name="cbSearchTabMicroP10" Visibility="Collapsed">Уручье</ComboBoxItem>
+
+                        </ComboBox>
+                        <TextBox Text="" Name="cbSearchTabStreet" Grid.Column="2" Grid.Row="1" Margin="5,0,0,0">
+                        </TextBox>
+                        <ComboBox Name="cbRoomsSearchCondition" Text="Не указано" Grid.Column="3" Grid.Row="1" Margin="5,0,0,0">
+                            <ComboBoxItem>Не указано</ComboBoxItem>
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                            <ComboBoxItem>5</ComboBoxItem>
+                            <ComboBoxItem>6</ComboBoxItem>
+                            <ComboBoxItem>7</ComboBoxItem>
+                            <ComboBoxItem>8</ComboBoxItem>
+                            <ComboBoxItem>9</ComboBoxItem>
+                        </ComboBox>
+                        <!-- Grid for Cb Tb for Price-->
+                        <Grid Grid.Column="4" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <ComboBox Text="&lt;=" Name="searchTabPrice1" Grid.Column="0" Margin="5,0,0,0">
+                                <ComboBoxItem>&lt;=</ComboBoxItem>
+                                <ComboBoxItem>&gt;=</ComboBoxItem>
+                            </ComboBox>
+                            <TextBox Name="searchTabPrice2" Text="" Grid.Column="1" Margin="5,0,0,0"></TextBox>
+                        </Grid>
+                        <!-- Grid for Cb Tb for Area-->
+                        <Grid Grid.Column="5" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <ComboBox Text="&lt;=" Name="searchTabArea1" Grid.Column="0" Margin="5,0,0,0">
+                                <ComboBoxItem>&lt;=</ComboBoxItem>
+                                <ComboBoxItem>&gt;=</ComboBoxItem>
+                            </ComboBox>
+                            <TextBox Text="" Name="searchTabArea2" Grid.Column="1" Margin="5,0,0,0"></TextBox>
+                        </Grid>
+                        <Button Name="btnSearchFornFind" Grid.Column="6" Grid.Row="1" Margin="5,0,0,0" Content="Найти" Click="BtnSearchFornFind_Click"/>
+                    </Grid>
+                    <!-- Подобранные варианты-->
+                    <TextBlock DockPanel.Dock="Top" Text="Подобранные варианты" FontSize="14" FontWeight="Bold" Margin="10px 5px 0px 5px" />
+
+                    <DataGrid Name="dgSearchForm"  AllowDrop="True" VerticalScrollBarVisibility="Visible" MouseLeftButtonUp="DgSearchForm_MouseLeftButtonUp"></DataGrid>
+                </DockPanel>
+            </TabItem>
+            <!-- Встречный вариант -->
+            <TabItem Name="tabSearchOfCounterOption" IsEnabled="False" Header="Поиск встречного варианта">
+                <DockPanel Background="#FFE5E5E5"  VerticalAlignment="Stretch" Height="Auto" HorizontalAlignment="Stretch">
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions> 
+                        <TextBlock Grid.Column="0"  Text="Наш объект" FontSize="14" FontWeight="Bold" Margin="5,5,0,0" />
+
+                    </Grid>
+                    <DataGrid DockPanel.Dock="Top" Name="dgOurFlaitInOffer" Height="75" Grid.Column="0" Margin="5,15,5,5" AllowDrop="False" GridLinesVisibility="None" ScrollViewer.CanContentScroll="False" VerticalScrollBarVisibility="Disabled" />
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock DockPanel.Dock="Top" FontSize="14" FontWeight="Bold" Text="Встречные условия" Margin="5,5,0,0" />
+                        <TextBlock Grid.Column="2"  Text="Выберите район поиска" FontSize="14" FontWeight="Bold" Margin="5,5,0,0" />
+                        <ComboBox Name="cbOffer" Grid.Column="3" VerticalAlignment="Center" Margin="6,2,6,2">
+                            <ComboBoxItem Name="offerTSENTRALNYY">Центральный</ComboBoxItem>
+
+                            <ComboBoxItem Name="offerPERVOMAYSKIYX">Первомайский</ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Background="WhiteSmoke" Margin="5,5,5,5">
+                            <CheckBox Name="cbWhoSearchOurDistrict" Content="Кто ищет наш район" HorizontalAlignment="Left" Margin="15,5,0,5" Checked="CbWhoSearchOurDistrict_Checked" Unchecked="CbWhoSearchOurDistrict_Unchecked"></CheckBox>
+                            <CheckBox Name="cbWhoSearchOurMicroDistrict" Content="Кто ищет наш микрорайон" HorizontalAlignment="Left" Margin="15,5,0,5" Checked="CbWhoSearchOurMicroDistrict_Checked" Unchecked="CbWhoSearchOurMicroDistrict_Unchecked"></CheckBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Background="WhiteSmoke" Margin="5,5,5,5">
+                            <CheckBox Name="cbWhoSearchOurStreet" Content="Кто ищет нашу улицу" HorizontalAlignment="Left" Margin="15,5,0,5" Checked="CbWhoSearchOurStreet_Checked" Unchecked="CbWhoSearchOurStreet_Unchecked"></CheckBox>
+                            <CheckBox Name="cbWhoSearchOurRoomsQuantity"  Content="Кто ищет наше количество комнат" HorizontalAlignment="Left" Margin="15,5,0,5" Checked="CbWhoSearchOurRoomsQuantity_Checked" Unchecked="CbWhoSearchOurRoomsQuantity_Unchecked"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Background="WhiteSmoke" Margin="5,5,5,5">
+                            <CheckBox Name="cbWhoSearchOurTotalArea" Content="Кто ищет нашу площадь" HorizontalAlignment="Left" Margin="15,5,0,5" Checked="CbWhoSearchOurTotalArea_Checked" Unchecked="CbWhoSearchOurTotalArea_Unchecked"></CheckBox>
+                            <CheckBox Name="cbWhoSearchOurPrice" Content="Кто ищет нашу цену" HorizontalAlignment="Left" Margin="15,5,0,5" Checked="CbWhoSearchOurPrice_Checked" Unchecked="CbWhoSearchOurPrice_Unchecked"></CheckBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3">
+                        <Button Name="btnFindVariants"  Content="Подобрать варианты" FontSize="16" Margin="5,5,5,5" Click="BtnFindVariants_Click"></Button>
+                        <Button Name="btnShoeOffers"  Content="Подробнее" FontSize="16" Margin="5,5,5,5" Click="BtnShoeOffers_Click"></Button>
+                        </StackPanel>
+                    </Grid>
+
+                    <DataGrid Name="dgForVariants" DockPanel.Dock="Top" AllowDrop="True" VerticalScrollBarVisibility="Visible" Margin="5,5,5,5" ></DataGrid>
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Name="tabAddFlat" IsEnabled="False" Header="Добавить объект">
+                <DockPanel Background="#FFE5E5E5">
+                    <!-- Photo Block-->
+                    <TextBlock DockPanel.Dock="Top" Text="Добавьте фото" FontSize="14" FontWeight="Bold" Margin="5,2,5,5" />
+                    <Rectangle DockPanel.Dock="Top" StrokeThickness="2" Stroke="White" Margin="5,0,5,0"></Rectangle>
+                    <Grid DockPanel.Dock="Top" Margin="5,2,5,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />                            
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Name="tbWayTopic1" Text="Фото 1" HorizontalAlignment="Center" Grid.Column="0" Margin="5,0,0,0"/>
+                        <Button Name="bAddPic1" Content="+" Grid.Column="1" Margin="5,0,0,0" Height="25" VerticalAlignment="Top" Click="bAddPic1_Click" />
+                        <TextBlock Name="tbWayTopic2" Text="Фото 2" HorizontalAlignment="Center" Grid.Column="2" Margin="5,0,0,0"/>
+                        <Button Name="bAddPic2" Content="+" Grid.Column="3" Margin="5,0,0,0" Click="bAddPic2_Click" />
+                        <TextBlock Name="tbWayTopic3" Text="Фото 3" HorizontalAlignment="Center" Grid.Column="4" Margin="5,0,0,0"/>
+                        <Button Name="bAddPic3" Content="+" Grid.Column="5" Margin="5,0,0,0" Click="bAddPic3_Click" />
+                        <TextBlock Name="tbWayTopic4" Text="Фото 4" HorizontalAlignment="Center" Grid.Column="6" Margin="5,0,0,0"/>
+                        <Button Name="bAddPic4" Content="+" Grid.Column="7" Margin="5,0,0,0" Click="bAddPic4_Click" />
+                        <TextBlock Name="tbWayTopic5" Text="Фото 5" HorizontalAlignment="Center" Grid.Column="8" Margin="5,0,0,0"/>
+                        <Button Name="bAddPic5" Content="+" Grid.Column="9" Margin="5,0,0,0" Click="bAddPic5_Click" />
+                        <TextBlock Name="tbWayTopic6" Text="Фото 6" HorizontalAlignment="Center" Grid.Column="10" Margin="5,0,0,0"/>
+                        <Button Name="bAddPic6" Content="+" Grid.Column="11" Margin="5,0,0,0" Click="bAddPic6_Click" />
+                        <TextBlock Name="tbWayTopic7" Text="Фото 7" HorizontalAlignment="Center" Grid.Column="12" Margin="5,0,0,0"/>
+                        <Button Name="bAddPic7" Content="+" Grid.Column="13" Margin="5,0,0,0" Click="bAddPic7_Click" />
+                    </Grid>
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border  Grid.Column="0" CornerRadius="5" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="122" Margin="5,5,5,5" VerticalAlignment="Center" Width="160" >
+                            <Image Name="iPic1" Source="Pictures/no_photo.jpg"  Stretch="Fill" MouseLeftButtonDown="iPic1_MouseLeftButtonDown" />
+                        </Border>
+                        <Border Grid.Column="1" CornerRadius="5" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="122" Margin="5,5,5,5" VerticalAlignment="Center" Width="160" >
+                            <Image Name="iPic2" Source="Pictures/no_photo.jpg"  Stretch="Fill" MouseLeftButtonDown="iPic2_MouseLeftButtonDown" />
+                        </Border>
+                        <Border Grid.Column="2" CornerRadius="5" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="122" Margin="5,5,5,5" VerticalAlignment="Center" Width="160" >
+                            <Image Name="iPic3" Source="Pictures/no_photo.jpg"  Stretch="Fill" MouseLeftButtonDown="iPic3_MouseLeftButtonDown" />
+                        </Border>
+                        <Border Grid.Column="3" CornerRadius="5" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="122" Margin="5,5,5,5" VerticalAlignment="Center" Width="160" >
+                            <Image Name="iPic4" Source="Pictures/no_photo.jpg"  Stretch="Fill" MouseLeftButtonDown="iPic4_MouseLeftButtonDown" />
+                        </Border>
+                        <Border Grid.Column="4" CornerRadius="5" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="122" Margin="5,5,5,5" VerticalAlignment="Center" Width="160" >
+                            <Image Name="iPic5" Source="Pictures/no_photo.jpg"  Stretch="Fill" MouseLeftButtonDown="iPic5_MouseLeftButtonDown" />
+                        </Border>
+                        <Border Grid.Column="5" CornerRadius="5" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="122" Margin="5,5,5,5" VerticalAlignment="Center" Width="160" >
+                            <Image Name="iPic6" Source="Pictures/no_photo.jpg"  Stretch="Fill" MouseLeftButtonDown="iPic6_MouseLeftButtonDown" />
+                        </Border>
+                        <Border Grid.Column="6" CornerRadius="5" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="122" Margin="5,5,5,5" VerticalAlignment="Center" Width="160" >
+                            <Image Name="iPic7" Source="Pictures/no_photo.jpg"  Stretch="Fill" MouseLeftButtonDown="iPic7_MouseLeftButtonDown" />
+                        </Border>
+                    </Grid>
+                    <!-- Flat Info Block-->
+                    <TextBlock DockPanel.Dock="Top" Text="Добавьте данные о квартире" FontSize="14" FontWeight="Bold" Margin="5,2,5,5" />
+                    <Rectangle DockPanel.Dock="Top" StrokeThickness="2" Stroke="White" Margin="5,0,5,0"></Rectangle>
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="5,2,5,5" Grid.Column="0">
+                            <TextBlock Margin="0,2,0,0" Text="Район" HorizontalAlignment="Center"/>
+                            <ComboBox Name="cbDistrictAddForm" Margin="0,2,0,0" SelectionChanged="cbDistrict_SelectionChanged">
+                                <ComboBoxItem Name="TSENTRALNYY">Центральный</ComboBoxItem>
+                                
+                                <ComboBoxItem Name="PERVOMAYSKIY">Первомайский</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,2,0,0" Text="Телефон 1" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddPhoneNumber1" Margin="0,2,0,0" Padding="2" />
+                        </StackPanel>
+                        <StackPanel Margin="5,2,5,5" Grid.Column="1">
+                            <TextBlock Margin="0,2,0,0" Text="Микрорайон" HorizontalAlignment="Center"/>
+                            <ComboBox  Name="cbMicroDistrict" Margin="0,2,0,0" SizeChanged="CbMicroDistrict_SizeChanged">
+                                <!--Центральный район-->
+                                <ComboBoxItem>Не указан</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC1" Visibility="Collapsed">Веснянка</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC2" Visibility="Collapsed">Дрозды</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC3" Visibility="Collapsed">Зацень</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC4" Visibility="Collapsed">Лебяжий (Ржавец)</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC5" Visibility="Collapsed">Машерова, Оперный театр, Коммунистическая</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC6" Visibility="Collapsed">Независимости, Немига, Романовская слобода</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC7" Visibility="Collapsed">Новинки</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC8" Visibility="Collapsed">Победителей, Заславская, Грибоедова, Тимирязева</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC9" Visibility="Collapsed">Цнянка</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroC10" Visibility="Collapsed">Червякова, Шевченко</ComboBoxItem>
+                                <!--Первомайский район-->
+                                <ComboBoxItem Name="cbMicroP1" Visibility="Collapsed">Ботаническая, Академическая</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP2" Visibility="Collapsed">Военный городок (Великий лес)</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP3" Visibility="Collapsed">Восток</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP4" Visibility="Collapsed">Восточный</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP5" Visibility="Collapsed">Макаенка</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP6" Visibility="Collapsed">Маяк Минска</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP7" Visibility="Collapsed">Независимости, Кедышко, Волгоградская</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP8" Visibility="Collapsed">Озерище</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP9" Visibility="Collapsed">Седых, Тикоцкого</ComboBoxItem>
+                                <ComboBoxItem Name="cbMicroP10" Visibility="Collapsed">Уручье</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock Margin="0,2,0,0" Text="Телефон 2" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddPhoneNumber2" Margin="0,2,0,0" Padding="2" />
+                        </StackPanel>
+                        <StackPanel Margin="5,2,5,5" Grid.Column="2">
+                            <TextBlock Margin="0,2,0,0" Text="Улица" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddStreet" Margin="0,2,0,0"/>
+                            <TextBlock Margin="0,2,0,0" Text="Контактное лицо" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddContactPerson" Margin="0,2,0,0" Padding="2" />
+                        </StackPanel>
+                        <StackPanel Margin="5,2,5,5" Grid.Column="3">
+                            <TextBlock Margin="0,2,0,0" Text="Дом" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddHouseNumber" Margin="0,2,0,0" Padding="2" />
+                            <TextBlock Margin="0,0,0,0" Text="Этаж" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddFloor" Margin="0,0,0,0" Padding="2" />
+                        </StackPanel>
+                        <StackPanel Margin="5,2,5,5" Grid.Column="4">
+                            <TextBlock Margin="0,2,0,0" Text="Корпус" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddHouseCorp" Margin="0,2,0,0" Padding="2" />
+                            <TextBlock Margin="0,0,0,0" Text="Этажность" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddFloorTotal" Margin="0,0,0,0" Padding="2" />
+                        </StackPanel>
+                        <StackPanel Margin="5,2,5,5" Grid.Column="5">
+                            <TextBlock Margin="0,0,0,0" Text="Дополнительная информация" HorizontalAlignment="Center"/>
+                            <TextBox Name="tbAddAddInfo" MaxLength="500" Margin="0,4,0,0" Height="72" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Комнат всего" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAddRoomsTotal" Grid.Column="0" Grid.Row="1" Margin="2" />
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Комнат раздельных" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAddRoomsSeparate" Grid.Column="1" Grid.Row="1" Margin="2" />
+                        <TextBlock Grid.Column="2" Grid.Row="0" Text="Площадь общая" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAddAreaCommon" Grid.Column="2" Grid.Row="1" Margin="2" />
+                        <TextBlock Grid.Column="3" Grid.Row="0" Text="Площадь жилая" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAddAreaLiving" Grid.Column="3" Grid.Row="1" Margin="2" />
+                        <TextBlock Grid.Column="4" Grid.Row="0" Text="Площадь кухни" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAAddreaKitchen" Grid.Column="4" Grid.Row="1" Margin="2" />
+                        <TextBlock Grid.Column="5" Grid.Row="0" Text="Год постройки" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAddConstructionYear" Grid.Column="5" Grid.Row="1" Margin="2" />
+                        <TextBlock Grid.Column="6" Grid.Row="0" Text="Цена" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAddPrice" Grid.Column="6" Grid.Row="1" Margin="2" />
+                        <TextBlock Grid.Column="7" Grid.Row="0" Text="Агентство" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAddAgency" Grid.Column="7" Grid.Row="1" Margin="2" />
+                        <Button IsEnabled="False" Name="btnAdd" Grid.Column="8" Grid.RowSpan="2" Content="Добавить в базу" Margin="3" Click="BtnAdd_Click"></Button>
+                    </Grid>
+                    <!-- Counter Option-->
+                    <TextBlock DockPanel.Dock="Top" Text="Данные по встречным вариантам / я ищу" FontSize="14" FontWeight="Bold" Margin="5,2,5,5" />
+                    <Rectangle DockPanel.Dock="Top" StrokeThickness="2" Stroke="White" Margin="5,0,5,0"></Rectangle>
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Район" HorizontalAlignment="Center"/>
+                        <ComboBox Name="cbDistrictCondition" Grid.Column="0" Grid.Row="1" Margin="2" SelectionChanged="CbDistrictCondition_SelectionChanged" >
+                            <ComboBoxItem Name="conTSENTRALNYY">Центральный</ComboBoxItem>
+
+                            <ComboBoxItem Name="conPERVOMAYSKIY">Первомайский</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Микрорайон" HorizontalAlignment="Center"/>
+                        <ComboBox Name="cbMicroDistrictCondition" Grid.Column="1" Grid.Row="1" Margin="2">
+                            <!--Центральный район-->
+                            <ComboBoxItem>Не указан</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC1" Visibility="Collapsed">Веснянка</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC2" Visibility="Collapsed">Дрозды</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC3" Visibility="Collapsed">Зацень</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC4" Visibility="Collapsed">Лебяжий (Ржавец)</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC5" Visibility="Collapsed">Машерова, Оперный театр, Коммунистическая</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC6" Visibility="Collapsed">Независимости, Немига, Романовская слобода</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC7" Visibility="Collapsed">Новинки</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC8" Visibility="Collapsed">Победителей, Заславская, Грибоедова, Тимирязева</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC9" Visibility="Collapsed">Цнянка</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroC10" Visibility="Collapsed">Червякова, Шевченко</ComboBoxItem>
+                            <!--Первомайский район-->
+                            <ComboBoxItem Name="conMicroP1" Visibility="Collapsed">Ботаническая, Академическая</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP2" Visibility="Collapsed">Военный городок (Великий лес)</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP3" Visibility="Collapsed">Восток</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP4" Visibility="Collapsed">Восточный</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP5" Visibility="Collapsed">Макаенка</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP6" Visibility="Collapsed">Маяк Минска</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP7" Visibility="Collapsed">Независимости, Кедышко, Волгоградская</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP8" Visibility="Collapsed">Озерище</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP9" Visibility="Collapsed">Седых, Тикоцкого</ComboBoxItem>
+                            <ComboBoxItem Name="conMicroP10" Visibility="Collapsed">Уручье</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Grid.Column="2" Grid.Row="0" Text="Улица" HorizontalAlignment="Center"/>
+                        <TextBox Name="cbStreetCondition" Grid.Column="2" Grid.Row="1" Margin="2">
+                        </TextBox>
+                        <TextBlock Grid.Column="3" Grid.Row="0" Text="Количество комнат" HorizontalAlignment="Center"/>
+                        <TextBox Name="tbRoomsCondition" Grid.Column="3" Grid.Row="1" Margin="2"></TextBox>
+                        <TextBlock Grid.Column="5" Grid.Row="0" Text="Площадь >=" HorizontalAlignment="Center" />
+                        <TextBox Name="tbAreaCommonCondition" Grid.Column="5" Grid.Row="1" Margin="2" ></TextBox>
+                        <TextBlock Grid.Column="7" Grid.Row="0" Text="Цена &lt;=" HorizontalAlignment="Center" />
+                        <TextBox Name="tbPriceCondition" Grid.Column="7" Grid.Row="1" Margin="2" ></TextBox>
+                        <Button Name="AddCodition" IsEnabled="False" Grid.Column="8" Grid.RowSpan="2" Margin="2" Click="AddCodition_Click">Добавить требование</Button>
+                    </Grid>
+                    <!-- Our Conditions-->
+                    <Rectangle DockPanel.Dock="Top" StrokeThickness="2" Stroke="White" Margin="5,5,5,0"></Rectangle>
+                    <Grid DockPanel.Dock="Top" Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Left" Text="Наши тебования" FontSize="14" FontWeight="Bold" Margin="5,2,5,5" />
+                        <Button Name="bntAddFlatFormDeleteCondition" IsEnabled="true" Grid.Column="1" Content="Удалить требование" Margin="0,0,0,4" Click="BntAddFlatFormDeleteCondition_Click"></Button>
+                    </Grid>
+                    <DataGrid  Name="dgCurrentAddFlatCondition" DockPanel.Dock="Top" Margin="2" AllowDrop="True" VerticalScrollBarVisibility="Visible"/>
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Name="tabAdministrator" IsEnabled="False" Header="Администратор">
+                <StackPanel Background="#FFE5E5E5">
+                    <TextBlock Text="Задать новый путь к базе банных" FontSize="15" FontWeight="Bold" Margin="5,10,5,5"/>
+                    <Rectangle StrokeThickness="2" Stroke="White" Margin="5,5,5,0"></Rectangle>
+                    <Grid Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="adminWaytoBase" Grid.Column="0" Margin="4" />
+                        <Button Name="adminSetWayToBase" Grid.Column="1" Content="Задать" Margin="4" Click="AdminSetWayToBase_Click"></Button>
+                    </Grid>
+                    <TextBlock Text="Задать новый логин и пароль для сотрудника" FontSize="15" FontWeight="Bold" Margin="5,10,5,5"/>
+                    <Rectangle StrokeThickness="2" Stroke="White" Margin="5,5,5,0"></Rectangle>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Логин" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Пароль" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="adminUserLogin" Grid.Column="0" Margin="4" />
+                        <Button Name="adminSetNewUserLogin" Grid.Column="1" Content="Задать" Margin="4" Click="AdminSetNewUserLogin_Click"></Button>
+                        <TextBox Name="adminUserPas" Grid.Column="2" Margin="4" />
+                        <Button Name="adminSetNewUserPas" Grid.Column="3" Content="Задать" Margin="4" Click="AdminSetNewUserPas_Click"></Button>
+                    </Grid>
+                    <TextBlock Text="Задать новый логин и пароль для администратора" FontSize="15" FontWeight="Bold" Margin="5,10,5,5"/>
+                    <Rectangle StrokeThickness="2" Stroke="White" Margin="5,5,5,0"></Rectangle>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Логин" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Пароль" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="adminAdminLogin" Grid.Column="0" Margin="4" />
+                        <Button Name="adminSetAdminLogin"  Grid.Column="1" Content="Задать" Margin="4" Click="AdminSetAdminLogin_Click"></Button>
+                        <TextBox Name="adminAdmibPas" Grid.Column="2" Margin="4" />
+                        <Button Name="adminSetAdminPas" Grid.Column="3" Content="Задать" Margin="4" Click="AdminSetAdminPas_Click"></Button>
+                    </Grid>
+                    <TextBlock Text="Последняя квартира внесенная в базу" FontSize="15" FontWeight="Bold" Margin="5,10,5,5"/>
+                    <DataGrid DockPanel.Dock="Top" Name="dgCurrentAddFlatAdminTab" Height="65" Margin="5,10,5,0" AllowDrop="False" GridLinesVisibility="None" ScrollViewer.CanContentScroll="False" VerticalScrollBarVisibility="Disabled"/>
+
+                </StackPanel>
+
+            </TabItem>
+            <TabItem Header="Справка" Name="helpBtn" GotFocus="HelpBtn_GotFocus" />
+
+        </TabControl>
+        
+         
+    </Grid> 
+</Window>
