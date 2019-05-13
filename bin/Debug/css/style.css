@@ -1,0 +1,260 @@
+html, body {height:100%; width:100%; }
+
+ /* COMMON DESIGN */
+body {
+		background-color:#4e5985;
+		font-family: FontAwesome;
+		margin-top:5px;
+}
+p {
+	text-align:center;
+	font-size:22px;
+	color:black;
+}
+b {
+    font-weight: bold;
+}
+p.headerText {
+	text-align:center;
+	font-size:42px;
+	color:#dbdee9;
+	text-shadow: 1px 1px 2px black, 0 0 1em #91279e;
+}
+.header {
+	padding-top:15px;
+	height:320px;
+	width:1024px;
+	margin: 0 auto;
+	background-image: url("../images/headerBgr.jpg");
+	background-color:#2c3768;
+	box-shadow: 2px 0 15px rgba(0,0,0,5);
+}
+.headerBottom {
+	
+	height:50px;
+	width:1024px;
+	margin: 0 auto;
+	background-color:#939dc7;
+	box-shadow: 2px 0 15px rgba(0,0,0,5);
+}
+.contentColumn 
+{
+	height:auto;
+	width:1004px;
+	margin: 0 auto;
+	background-color:#8894c3;
+	border-top: 1px outset #2c3768;
+	box-shadow: 2px 0 15px rgba(0,0,0,5);
+	padding: 10px 10px 10px 10px;
+}
+.box1{
+	height:220px;
+	width:1004px;
+	margin: 0 auto;
+}
+.myPicture {
+	float:left;
+	width:306px;
+	height:192px;
+	margin: 20px 0 0 20px;
+	border: 1px solid white;
+	background-image:url("../images/PixelMe.png");
+	background-size: cover;
+	box-shadow: 2px 0 15px rgba(0,0,0,5);
+}
+.contentText p{
+	float:right;
+	width:650px;
+	margin: 20px 10px 0px 0px;
+	
+}
+.contentText p{
+	text-align:justify;
+}
+.footer {
+	min-height:120px;
+	width:1024px;
+	margin: 0 auto;
+	background-color:#576069;
+	border-top: 1px outset #2c3768;
+	box-shadow: 2px 0 15px rgba(0,0,0,5);
+	margin-bottom:5px;
+}
+.footerNavigation{
+	margin-left:80px;
+	width:592px;
+    list-style-type: none;
+    margin: 30px 0px 0px 215px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+	border-radius:8px;
+}
+.footerNavigation li{
+    float: left;
+    border-right:1px solid #bbb;
+}
+.footerNavigation li:last-child {
+    border-right: none;
+}
+.footerNavigation a{
+    display: block;
+    color: #dbdee9;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.footerNavigation li a:hover {
+    background-color: #111;
+}
+.copyRight{
+	margin-top:10px;
+	margin-right:20px;
+	font-size:15px;
+	text-align:right;
+}
+
+	/* C# PAGE */
+.box2{
+	height:140px;
+	width:1004px;
+	margin: 0 auto;
+}	
+.icon {
+	float:left;
+	width:105px;
+	height:105px;
+	margin: 20px 0 0 20px;
+	background-image:url("../images/ico.png");
+	background-size: cover;
+	
+}	
+.cSharContentText {
+	padding: 20px 0px 0px 0px;
+	width:850px;
+	float:right;
+}
+.cSharContentText p{
+	text-align:justify;
+}
+.cSharpContent {
+	margin: 0px 0px 80px 0px;
+}
+.cSharpContent p{
+	text-align:justify;
+}
+.progAdvatages {
+	margin: 10px 0px 20px 0px;
+}
+.progAdvatages li{
+	padding: 5px 0px 0px 35px;
+	font-size:22px;
+	font-style:italic;
+	color:black;	
+}
+.searchFlatPic {
+	margin: 10px 0px 10px 10px;
+	width:860px;
+	height:450px;
+	background-size: cover;
+	background-image:url("../images/searchFlatPic.jpg");	
+}
+
+.searchFlatPicGif {
+	margin: 10px 0px 10px 10px;
+	width:860px;
+	height:450px;
+	background-size: cover;
+	background-image:url("../images/search.gif");	
+}
+
+.addFlatPicGif {
+	margin: 10px 0px 10px 10px;
+	width:860px;
+	height:450px;
+	background-size: cover;
+	background-image:url("../images/additional.gif");	
+}
+.delFlatPicGif {
+	margin: 10px 0px 10px 10px;
+	width:860px;
+	height:450px;
+	background-size: cover;
+	background-image:url("../images/DeleteFlat.gif");	
+}
+
+.searchCounterFlatPicGif {
+	margin: 10px 0px 10px 10px;
+	width:860px;
+	height:450px;
+	background-size: cover;
+	background-image:url("../images/SearchCounterVariants.gif");	
+}
+
+.addFlatPicGifToDB {
+	margin: 10px 0px 10px 10px;
+	width:860px;
+	height:450px;
+	background-size: cover;
+	background-image:url("../images/addFaltToDb.gif");	
+}
+
+.addDelConditFlatPicGif {
+	margin: 10px 0px 10px 10px;
+	width:860px;
+	height:450px;
+	background-size: cover;
+	background-image:url("../images/AddDelCondition.gif");	
+}
+
+.addFlatPic {
+	margin: 10px 0px 10px 10px;
+	width:860px;
+	height:450px;
+	background-size: cover;
+	background-image:url("../images/addFlatPic.jpg");
+}
+.videoOpen {
+	background-image:url("../images/OpenPic.gif");
+	background-size: cover;
+	width:860px;
+	height:450px;
+	margin: 10px 0px 10px 10px;
+}
+.fillPic {
+	background-image:url("../images/FillPic.gif");
+	background-size: cover;
+	width:860px;
+	height:128px;
+	margin: 10px 0px 10px 10px;
+}
+.demandPic {
+	background-image:url("../images/addDemand.png");
+	background-size: cover;
+	width:860px;
+	height:62px;
+	margin: 10px 0px 10px 10px;
+}
+.delPic {
+	background-image:url("../images/OurObjectD.png");
+	background-size: cover;
+	width:860px;
+	height:128px;
+	margin: 10px 0px 10px 10px;
+}
+.progInfo {
+	margin: 10px 0px 20px 0px;
+}
+.progInfo li{
+	padding: 5px 0px 0px 35px;
+	font-size:20px;
+	font-style:italic;
+	color:black;		
+}
+.downHref{
+	padding: 5px 0px 0px 35px;
+	font-size:22px;
+	font-style:italic;
+	color:black;	
+}
+
